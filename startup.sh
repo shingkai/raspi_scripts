@@ -9,3 +9,7 @@ if [ $(nmcli -t -f state general) == "connected" ]; then
 else
     echo 0 > /sys/class/leds/led0/brightness
 fi
+
+# email me the external ip when the pi starts up
+# assumes mail has been setup
+$(getip | mail -v -s "Raspib booted" $EMAIL)
